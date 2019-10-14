@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+    <repo quality="experimental" status="unofficial">
+        <name><![CDATA[surumeika-repository]]></name>
+        <description lang="en"><![CDATA[Surumeika Repository]]></description>
+        <homepage>https://github.com/surumeika1987/surumeika-repository</homepage>
+        <owner type="person">
+            <email>surumeika1987@aol.com</email>
+            <name><![CDATA[surumeika1987]]></name>
+        </owner>
+        <source type="git">https://github.com/surumeika1987/surumeika-repository.git</source>
+    </repo>
+</repositories>
