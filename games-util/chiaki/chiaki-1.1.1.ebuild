@@ -57,3 +57,7 @@ src_install() {
 	make install
 	domenu chiaki.desktop
 }
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
