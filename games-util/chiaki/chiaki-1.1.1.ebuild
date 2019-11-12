@@ -11,7 +11,7 @@ DESCRIPTION="Free and Open Source PS4 Remote Play Client"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test cli +gui android +opus openssl qtgamepad +sdlgamepad standalone"
+IUSE="test cli +gui +opus openssl qtgamepad +sdlgamepad"
 
 DEPEND=">=dev-util/cmake-3.2
 		dev-python/protobuf-python
@@ -40,11 +40,53 @@ src_prepare() {
 
 src_configure() {
 	cd "${S}"
-	// TODO: Set Cmake flags
+	local cmake_flags=( -DCMAKE_INSTALL_PREFIX="${D}/usr" )
+
+	if use test ; then
+		cmake_flags+=( -DCHIAKI_ENABLE_TESTS=ON )
+	else
+		cmake_flags+=( -DCHIAKI_ENABLE_TESTS=OFF )
+	fi
+
+	if use cli ; then
+		cmake_flags+=( -DCHIAKI_ENABLE_CLI=ON )
+	else
+		cmake_flags+=( -DCHIAKI_ENABLE_CLI=OFF )
+	fi
+
+	if use gui ; then
+		cmake_flags+=( -DCHIAKI_ENABLE_GUI=ON )
+	else
+		cmake_flags+=( -DCHIAKI_ENABLE_GUI=OFF )
+	fi
+
+	if use opus ; then
+		cmake_flags+=( -DCHIAKI_LIB_ENABLE_OPUS=ON )
+	else
+		cmake_flags+=( -DCHIAKI_LIB_ENABLE_OPUS=OFF )
+	fi
+
+	if use openssl ; then
+		cmake_flags+=( -DCHIAKI_LIB_OPENSSL_EXTERNAL_PROJECT=ON )
+	else
+		cmake_flags+=( -DCHIAKI_LIB_OPENSSL_EXTERNAL_PROJECT=OFF )
+	fi
+
+	if use qtgamepad ; then
+		cmake_flags+=( -DCHIAKI_GUI_ENABLE_QT_GAMEPAD=ON )
+	else
+		cmake_flags+=( -DCHIAKI_GUI_ENABLE_QT_GAMEPAD=OFF )
+	fi
+
+	if use sdlgamepad ; then
+		cmake_flags+=( -DCHIAKI_GUI_ENABLE_SDL_GAMECONTROLLER=ON )
+	else
+		cmake_flags+=( -DCHIAKI_GUI_ENABLE_SDL_GAMECONTROLLER=OFF )
+	fi
 
 	mkdir "${S}/build"
 	cd "${S}/build"
-	cmake -DCMAKE_INSTALL_PREFIX="${D}/usr" ..
+	cmake ${cmake_flags} ..
 }
 
 src_compile() {
@@ -59,5 +101,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
 	xdg_icon_cache_update
 }
