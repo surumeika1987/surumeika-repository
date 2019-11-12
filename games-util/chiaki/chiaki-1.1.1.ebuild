@@ -44,7 +44,7 @@ src_configure() {
 
 	mkdir "${S}/build"
 	cd "${S}/build"
-	cmake DCMAKE_INSTALL_PREFIX=${D} ..
+	cmake -DCMAKE_INSTALL_PREFIX=${D} ..
 }
 
 src_compile() {
