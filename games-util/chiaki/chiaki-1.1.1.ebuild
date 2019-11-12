@@ -11,7 +11,7 @@ DESCRIPTION="Free and Open Source PS4 Remote Play Client"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="-test -cli gui -android opus -openssl -qtgamepad sdlgamepad -standalone"
+IUSE="-test -cli +gui -android +opus -openssl -qtgamepad +sdlgamepad -standalone"
 
 DEPEND=">=dev-util/cmake-3.2
 		gui? (	dev-qt/qtcore
