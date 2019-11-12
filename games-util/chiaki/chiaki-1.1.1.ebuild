@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test cli +gui android +opus openssl qtgamepad +sdlgamepad standalone"
 
 DEPEND=">=dev-util/cmake-3.2
+		dev-python/protobuf-python
 		gui? (	dev-qt/qtcore
 				dev-qt/qtmultimedia
 				dev-qt/qtopengl
@@ -21,7 +22,6 @@ DEPEND=">=dev-util/cmake-3.2
 				media-video/ffmpeg )
 		opus? (	media-libs/opus )
 		openssl? ( >=dev-libs/openssl-1.1.0l )
-		dev-python/protobuf-python
 		qtgamepad? ( dev-qt/qtgamepad )"
 
 S="${WORKDIR}/chiaki"
@@ -44,8 +44,7 @@ src_configure() {
 
 	mkdir "${S}/build"
 	cd "${S}/build"
-	cmake ..
-	
+	cmake DCMAKE_INSTALL_PREFIX=${D} ..
 }
 
 src_compile() {
@@ -54,5 +53,7 @@ src_compile() {
 }
 
 src_install() {
-	// TODO install
+	cd "${S}/build"
+	make install
+	domenu chiaki.desktop
 }
