@@ -97,7 +97,13 @@ src_compile() {
 src_install() {
 	cd "${S}/build"
 	make install
-	domenu chiaki.desktop
+
+	if use gui ; then
+		# Move icon file
+		mkdir "${D}/usr/share/icons/hicolor/512x512/apps"
+		mv "${D}/usr/share/icons/hicolor/512x512/chiaki.png" "${D}/usr/share/icons/hicolor/512x512/apps/chiaki.png"
+		domenu chiaki.desktop
+	fi
 }
 
 pkg_postinst() {
