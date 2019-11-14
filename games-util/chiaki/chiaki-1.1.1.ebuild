@@ -11,11 +11,11 @@ DESCRIPTION="Free and Open Source PS4 Remote Play Client"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test cli +gui +opus openssl gamepad +sdl"
+IUSE="test cli +qt5 +opus openssl gamepad +sdl"
 
 DEPEND=">=dev-util/cmake-3.2
 		dev-python/protobuf-python
-		gui? (	dev-qt/qtcore
+		qt5? (	dev-qt/qtcore
 				dev-qt/qtmultimedia
 				dev-qt/qtopengl
 				dev-qt/qtsvg
@@ -55,7 +55,7 @@ src_configure() {
 		cmake_flags+=( -DCHIAKI_ENABLE_CLI=OFF )
 	fi
 
-	if use gui ; then
+	if use qt5 ; then
 		cmake_flags+=( -DCHIAKI_ENABLE_GUI=ON )
 	else
 		cmake_flags+=( -DCHIAKI_ENABLE_GUI=OFF )
@@ -99,7 +99,7 @@ src_install() {
 	cd "${S}/build"
 	emake install
 
-	if use gui ; then
+	if use qt5 ; then
 		# Move icon file
 		mkdir "${D}/usr/share/icons/hicolor/512x512/apps"
 		mv "${D}/usr/share/icons/hicolor/512x512/chiaki.png" "${D}/usr/share/icons/hicolor/512x512/apps/chiaki.png"
