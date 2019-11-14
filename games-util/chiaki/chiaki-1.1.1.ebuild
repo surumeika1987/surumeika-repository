@@ -11,7 +11,7 @@ DESCRIPTION="Free and Open Source PS4 Remote Play Client"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test cli +gui +opus openssl qtgamepad +sdlgamepad"
+IUSE="test cli +gui +opus openssl gamepad +sdl"
 
 DEPEND=">=dev-util/cmake-3.2
 		dev-python/protobuf-python
@@ -22,13 +22,14 @@ DEPEND=">=dev-util/cmake-3.2
 				media-video/ffmpeg )
 		opus? (	media-libs/opus )
 		openssl? ( >=dev-libs/openssl-1.1.0l )
-		qtgamepad? ( dev-qt/qtgamepad )"
+		gamepad? ( dev-qt/gamepad )"
 
 S="${WORKDIR}/chiaki"
-		
-		
+
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+inherit xdg-utils
 
 src_unpack() {
 	unpack ${A}
@@ -72,13 +73,13 @@ src_configure() {
 		cmake_flags+=( -DCHIAKI_LIB_OPENSSL_EXTERNAL_PROJECT=OFF )
 	fi
 
-	if use qtgamepad ; then
+	if use gamepad ; then
 		cmake_flags+=( -DCHIAKI_GUI_ENABLE_QT_GAMEPAD=ON )
 	else
 		cmake_flags+=( -DCHIAKI_GUI_ENABLE_QT_GAMEPAD=OFF )
 	fi
 
-	if use sdlgamepad ; then
+	if use sdl ; then
 		cmake_flags+=( -DCHIAKI_GUI_ENABLE_SDL_GAMECONTROLLER=ON )
 	else
 		cmake_flags+=( -DCHIAKI_GUI_ENABLE_SDL_GAMECONTROLLER=OFF )
@@ -91,18 +92,17 @@ src_configure() {
 
 src_compile() {
 	cd "${S}/build"
-	make
+	emake
 }
 
 src_install() {
 	cd "${S}/build"
-	make install
+	emake install
 
 	if use gui ; then
 		# Move icon file
 		mkdir "${D}/usr/share/icons/hicolor/512x512/apps"
 		mv "${D}/usr/share/icons/hicolor/512x512/chiaki.png" "${D}/usr/share/icons/hicolor/512x512/apps/chiaki.png"
-		domenu chiaki.desktop
 	fi
 }
 
