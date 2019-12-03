@@ -4,7 +4,7 @@
 EAPI=7
 
 HOMEPAGE="https://github.com/thestr4ng3r/chiaki"
-SRC_URI="https://github.com/thestr4ng3r/chiaki/releases/download/v1.1.1/chiaki-v1.1.1-src.tar.gz"
+SRC_URI="https://github.com/thestr4ng3r/chiaki/releases/download/v1.1.2/chiaki-v1.1.2-src.tar.gz"
 
 DESCRIPTION="Free and Open Source PS4 Remote Play Client"
 
