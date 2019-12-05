@@ -22,7 +22,7 @@ DEPEND=">=dev-util/cmake-3.2
 				media-video/ffmpeg )
 		opus? (	media-libs/opus )
 		openssl? ( >=dev-libs/openssl-1.1.0l )
-		gamepad? ( dev-qt/gamepad )"
+		gamepad? ( dev-qt/qtgamepad )"
 
 S="${WORKDIR}/chiaki"
 
