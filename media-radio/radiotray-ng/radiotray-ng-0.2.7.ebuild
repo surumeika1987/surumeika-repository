@@ -43,7 +43,7 @@ src_prepare() {
 
 src_configure() {
 	cd "${S}"
-	local cmake_flags=( -DCMAKE_INSTALL_PREFIX="${D}/usr" )
+	local cmake_flags=( -DCMAKE_INSTALL_PREFIX="${D}" )
         if use debug ; then
                 cmake_flags+=( -DCMAKE_BUILD_TYPE=Debug )
         else
