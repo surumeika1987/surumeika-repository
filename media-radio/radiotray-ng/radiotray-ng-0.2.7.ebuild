@@ -11,7 +11,7 @@ DESCRIPTION="An Internet radio player for Linux"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="test debug"
 
 DEPEND="sys-apps/lsb-release
         net-misc/curl[ssl(+)]
@@ -44,6 +44,11 @@ src_prepare() {
 src_configure() {
 	cd "${S}"
 	local cmake_flags=( -DCMAKE_INSTALL_PREFIX="${D}" )
+
+        if use test ; then
+                cmake_flags+=( -DBUILD_TESTS=ON )
+        fi
+
         if use debug ; then
                 cmake_flags+=( -DCMAKE_BUILD_TYPE=Debug )
         else
