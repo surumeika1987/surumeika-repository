@@ -10,7 +10,7 @@ DESCRIPTION="Free and Open Source PS4 Remote Play Client"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test cli +qt5 +opus openssl gamepad +sdl"
 
 DEPEND=">=dev-util/cmake-3.2
