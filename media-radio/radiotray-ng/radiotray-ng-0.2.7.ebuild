@@ -62,7 +62,7 @@ src_compile() {
 
 src_install() {
 	cd "${S}/build"
-	emake install
+	emake DESTDIR=${D} install
 }
 
 pkg_postinst() {
