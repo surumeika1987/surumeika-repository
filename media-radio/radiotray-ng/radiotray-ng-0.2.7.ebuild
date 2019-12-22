@@ -54,10 +54,12 @@ src_configure() {
         else
                 cmake_flags+=( -DCMAKE_BUILD_TYPE=Release )
         fi
+
+        cmake_flags+=( -DCMAKE_BUILD_TYPE=Release )
         
         mkdir "${S}/build"
 	cd "${S}/build"
-	cmake ${cmake_flags} ..
+	cmake .. ${cmake_flags[@]}
 }
 
 src_compile() {

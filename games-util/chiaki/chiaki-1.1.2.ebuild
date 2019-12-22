@@ -87,7 +87,7 @@ src_configure() {
 
 	mkdir "${S}/build"
 	cd "${S}/build"
-	cmake ${cmake_flags} ..
+	cmake .. ${cmake_flags[@]}
 }
 
 src_compile() {
