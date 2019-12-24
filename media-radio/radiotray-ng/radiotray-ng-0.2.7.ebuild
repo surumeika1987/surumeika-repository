@@ -20,7 +20,12 @@ DEPEND="sys-apps/lsb-release
         x11-libs/libnotify
         dev-libs/boost
         media-libs/gstreamer
+        media-libs/gst-plugins-base
         media-libs/gst-plugins-good
+        media-libs/gst-plugins-bad
+        media-libs/gst-plugins-ugly
+        net-libs/libsoup
+        media-plugins/gst-plugins-soup
         >=dev-libs/libappindicator-12.10.0-r301
         >=x11-libs/gtk+-3.24.10
         dev-libs/libbsd
