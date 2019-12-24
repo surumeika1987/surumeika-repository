@@ -11,7 +11,7 @@ DESCRIPTION="An Internet radio player for Linux"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test debug"
+IUSE="test debug gst-mms gst-hls gst-libav gst-mp3 gst-aac"
 
 DEPEND="sys-apps/lsb-release
         net-misc/curl[ssl(+)]
@@ -32,7 +32,12 @@ DEPEND="sys-apps/lsb-release
         sys-libs/ncurses
         dev-cpp/glibmm
         >=x11-libs/wxGTK-3.0.4-r300
-        dev-util/cmake"
+        dev-util/cmake
+        gst-mms?        ( media-plugins/gst-plugins-libmms )
+        gst-hls?        ( media-plugins/gst-plugins-hls )
+        gst-libav?      ( media-plugins/gst-plugins-libav )
+        gst-mp3?        ( media-plugins/gst-plugins-mpg123 )
+        gst-aac?        ( media-plugins/gst-plugins-faad )"
 
 RDEPEND="${DEPEND}"
 BDEPEND=""
