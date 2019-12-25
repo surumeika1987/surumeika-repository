@@ -11,17 +11,17 @@ DESCRIPTION="Free and Open Source PS4 Remote Play Client"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test cli +qt5 +opus openssl gamepad +sdl"
+IUSE="test cli +qt5 +opus gamepad +sdl"
 
 DEPEND=">=dev-util/cmake-3.2
 		dev-python/protobuf-python
+		>=dev-libs/openssl-1.1.0l
 		qt5? (	dev-qt/qtcore
 				dev-qt/qtmultimedia
 				dev-qt/qtopengl
 				dev-qt/qtsvg
 				media-video/ffmpeg )
 		opus? (	media-libs/opus )
-		openssl? ( >=dev-libs/openssl-1.1.0l )
 		gamepad? ( dev-qt/qtgamepad )"
 
 S="${WORKDIR}/chiaki"
