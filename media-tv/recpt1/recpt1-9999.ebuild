@@ -15,7 +15,7 @@ SRC_URI=""
 
 KEYWORDS="~amd64"
 
-LICENSE="Free"
+LICENSE=""
 
 SLOT="0"
 
