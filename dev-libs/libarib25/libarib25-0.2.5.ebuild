@@ -23,7 +23,7 @@ if [ "${PV#9999}" = "${PV}" ] ; then
 	SRC_URI="https://github.com/stz2012/libarib25/archive/v${VERSION}.tar.gz -> ${P}.tar.gz"
 fi
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 LICENSE="Apache-2.0"
 
