@@ -15,7 +15,7 @@ SRC_URI="http://plex-net.co.jp/plex/pxw3u4/pxw3u4_BDA_ver1x64.zip -> pxw3u4_BDA_
 
 KEYWORDS="~amd64"
 
-LICENSE="GPL-2.0"
+LICENSE="GPL-2"
 
 SLOT="0"
 
@@ -54,7 +54,8 @@ src_compile() {
 src_install() {
 	cd "${WORKDIR}/${P}/driver"
 
-	INSTALL_DIR="${D}/lib/modules/$(shell uname -r)/misc"
+	KVER=$(uname -r)
+	INSTALL_DIR="${D}/lib/modules/${KVER}/misc"
 	mkdir -p "${INSTALL_DIR}"
 	cp px4_drv.ko ${INSTALL_DIR}/px4_drv.ko
 	chmod 644 ${INSTALL_DIR}/px4_drv.ko
