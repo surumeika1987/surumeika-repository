@@ -62,6 +62,9 @@ src_install() {
 	mkdir -p "${D}/lib/udev/rules.d/"
 	cp ../etc/99-px4video.rules ${D}/lib/udev/rules.d/99-px4video.rules
 	chmod 644 ${D}/lib/udev/rules.d/99-px4video.rules
+
+	mkdir -p "${D}/lib/firmware"
+	cp "${WORKDIR}/${P}/fwtool/it930x-firmware.bin" "${D}/lib/firmware/it930x-firmware.bin"
 }
 
 pkg_preinst() {
