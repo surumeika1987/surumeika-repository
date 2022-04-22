@@ -21,7 +21,7 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-IUSE=""
+IUSE="dist-kernel"
 
 RDEPEND=""
 
