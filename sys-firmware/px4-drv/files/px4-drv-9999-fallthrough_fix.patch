@@ -1,0 +1,30 @@
+diff -uprN -x .git px4_drv_org/driver/px4_usb.c px4_drv/driver/px4_usb.c
+--- px4_drv_org/driver/px4_usb.c	2023-01-04 03:08:51.053775003 +0900
++++ px4_drv/driver/px4_usb.c	2023-01-04 03:09:40.127858599 +0900
+@@ -119,7 +119,7 @@ static int px4_usb_probe(struct usb_inte
+ 
+ 			dev_info(dev, "Multi-device power control: %s\n",
+ 				 (px4_use_mldev) ? "enabled" : "disabled");
+-			/* fall through */
++			fallthrough;
+ 		case USB_PID_PX_W3U4:
+ 		case USB_PID_PX_W3PE4:
+ 		case USB_PID_PX_W3PE5:
+@@ -137,7 +137,7 @@ static int px4_usb_probe(struct usb_inte
+ 
+ 		case USB_PID_PX_MLT5U:
+ 			pxmlt5_model = PXMLT5U_MODEL;
+-			/* fall through */
++			fallthrough;
+ 		case USB_PID_PX_MLT5PE:
+ 			ret = px4_usb_init_bridge(dev, usb_dev,
+ 						  &ctx->ctx.pxmlt.it930x);
+@@ -152,7 +152,7 @@ static int px4_usb_probe(struct usb_inte
+ 
+ 		case USB_PID_PX_MLT8PE3:
+ 			pxmlt8_model = PXMLT8PE3_MODEL;
+-			/* fall through */
++			fallthrough;
+ 		case USB_PID_PX_MLT8PE5:
+ 			ret = px4_usb_init_bridge(dev, usb_dev,
+ 						  &ctx->ctx.pxmlt.it930x);
